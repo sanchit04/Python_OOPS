@@ -80,11 +80,12 @@ class Vegetable(ItemMetadata):
 # We are adding Cucumber to Vegetable category and Item Store
 veggie1=Vegetable(name="Cucumber",price=30,quantity=2,category="Vegetable",color="green",is_frozen=True)
 
-#checks if give_stats_about_item is present in instance if not goes and check in vegetable class
+#checks give_stats_about_item is present  in vegetable class
 #in vegetable class since not present checks it in its parent i.e. ItemMetadata -> able to find it there
+# If not able to find then check in object level if still not able to find throw error
 veggie1.give_stats_about_item()
 
-#checks if calculate_total_price is present in instance if not goes and check in vegetable class
+#checks if calculate_total_price is present in vegetable class
 #in vegetable class its present thus does not traverse back to parent itemmetadata -> parent item
 #executes calculate_total_price from vegetable class itself
 veggie1.calculate_total_price()
@@ -93,18 +94,18 @@ veggie1.calculate_total_price()
 # We are adding apple to item store since theres no personalised implementation for Fruit category
 fruit1=ItemMetadata(name="Apple",price=25,quantity=3,category="Fruit",color="red")
 
-#checks if give_stats_about_item is present in instance if not goes and check in ItemMetadata class
+#checks if give_stats_about_item in ItemMetadata class
 #in ItemMetadata class its present
 fruit1.give_stats_about_item()
 
-#checks if give_stats_about_item is present in instance if not goes and check in ItemMetadata class
+#checks if give_stats_about_item is present in ItemMetadata class
 #in ItemMetadata class since not present checks it in its parent i.e. Item -> able to find it there
 fruit1.calculate_total_price()
 
-# Checks if class attr category_department is present in instance if not then checks in Vegetable Class
+# Checks if class attr category_department is present in Vegetable Class
 print(veggie1.category_department)
 
-#Checks if class attr category_department is present in instance if not then checks in ItemMetadata if not found
+#Checks if class attr category_department is present  in ItemMetadata if not found
 #goes to Item Class
 print(fruit1.category_department)
 
