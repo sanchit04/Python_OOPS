@@ -12,6 +12,7 @@ class Item:
 
     # CLASS METHOD USAGE IS SOMETHING WHICH APPLIES AT A GLOBAL LEVEL when I UPDATE DISCOUNT RATE
     # THINK OF IT AS DISCOUNT RATE WILL BE UPDATED FOR ALL ITEMS which will be stored inside our ITEM CLASS STORE
+    # CLASS METHODS should be used to update anything for the whole class
     @classmethod
     def update_discount_rate(cls,new_discount_rate):
         cls.discount_rate=new_discount_rate
