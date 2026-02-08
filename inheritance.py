@@ -1,4 +1,5 @@
 class Item:
+    category_department="GENERAL"
     #This can be accessed by Child Class
     class_name="Item"
 
@@ -38,7 +39,7 @@ class ItemMetadata(Item):
 
 #Inherits qualities of ItemMetadata which in turn inherits qualities of Item
 class Vegetable(ItemMetadata):
-
+    category_department = "Vegetables"
     frozen_discount_rate = 0.8
     # able to access Item.class_name and class method of Item since vegetable is child and Item is Parent
     # and the access modifier is default public
@@ -56,6 +57,12 @@ class Vegetable(ItemMetadata):
             color=color
         )
         self.is_frozen=is_frozen
+        # Since __init__ will always be instantiated only once we should do this here
+        # if we do it in an instance method or class or static method which can be called
+        # multiple times it will affect the price each time you call that method
+        #If the vegetable is frozen we apply discount to the price
+        if self.is_frozen:
+            self.price=Vegetable.frozen_discount_rate * self.price
 
     # User can update the frozen discount rate using this class method
     # the new discount rate will be applicable for all the vegetables
@@ -67,9 +74,6 @@ class Vegetable(ItemMetadata):
     # with requirements for category of vegetables
 
     def calculate_total_price(self):
-        #If the vegetable is frozen we apply discount to the price
-        if self.is_frozen:
-            self.price=Vegetable.frozen_discount_rate * self.price
         print(f"Total price for vegetable:{self.name} is {self.price * self.quantity}")
 
 
@@ -84,6 +88,7 @@ veggie1.give_stats_about_item()
 #in vegetable class its present thus does not traverse back to parent itemmetadata -> parent item
 #executes calculate_total_price from vegetable class itself
 veggie1.calculate_total_price()
+veggie1.calculate_total_price()
 
 # We are adding apple to item store since theres no personalised implementation for Fruit category
 fruit1=ItemMetadata(name="Apple",price=25,quantity=3,category="Fruit",color="red")
@@ -95,6 +100,16 @@ fruit1.give_stats_about_item()
 #checks if give_stats_about_item is present in instance if not goes and check in ItemMetadata class
 #in ItemMetadata class since not present checks it in its parent i.e. Item -> able to find it there
 fruit1.calculate_total_price()
+
+# Checks if class attr category_department is present in instance if not then checks in Vegetable Class
+print(veggie1.category_department)
+
+#Checks if class attr category_department is present in instance if not then checks in ItemMetadata if not found
+#goes to Item Class
+print(fruit1.category_department)
+
+print(Vegetable.category_department)
+print(Item.category_department)
 
 #Inheritance
 # Class Methods , Static Methods , class attributes of Parent class can be accessed by Child
