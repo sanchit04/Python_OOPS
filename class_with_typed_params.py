@@ -52,6 +52,8 @@ class StrongTypedItem:
 
         # ASSERTS ARE NOT A GOOD PRACTISE TO DO INPUT VALIDATION since if we do python -0 <main.py>
         # it will disable assertion completely!! assert should be used only for developer validation
+        # BEST THING IS TO DO IF CHECK and RAISE Exception if not of required type
+        
         assert isinstance(item,str),"Item can accept only string values"
         # FlOAT OR INT assert OR condition
         assert isinstance(price,(float,int)) and price>0,"price can be a int or float value"
