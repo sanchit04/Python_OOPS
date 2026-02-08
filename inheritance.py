@@ -1,8 +1,16 @@
 class Item:
+    #This can be accessed by Child Class
+    class_name="Item"
+
+    @classmethod
+    def do_random_stuff(cls):
+        print("I am class method of Item class")
+
     def __init__(self,name,price,quantity):
         self.name=name
         self.price=price
         self.quantity=quantity
+
     # This will be used as base method to calculate total price as a generic item product
     def calculate_total_price(self):
         print(f"Total price for item {self.name} is :{self.price * self.quantity}")
@@ -32,6 +40,11 @@ class ItemMetadata(Item):
 class Vegetable(ItemMetadata):
 
     frozen_discount_rate = 0.8
+    # able to access Item.class_name and class method of Item since vegetable is child and Item is Parent
+    # and the access modifier is default public
+    # Parent wont be able to access child class
+    print(Item.class_name)
+    print(Item.do_random_stuff())
 
     def __init__(self, name, price, quantity, category, color, is_frozen):
 
@@ -83,3 +96,6 @@ fruit1.give_stats_about_item()
 #in ItemMetadata class since not present checks it in its parent i.e. Item -> able to find it there
 fruit1.calculate_total_price()
 
+#Inheritance
+# Class Methods , Static Methods , class attributes of Parent class can be accessed by Child
+# Unless access modifier of those is set to private, if its set to private they cannot access it!
