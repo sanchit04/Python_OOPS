@@ -47,7 +47,7 @@ class Dog:
         return "I make bhow sound"
 
     def eat(self):
-        return ("I eat chicken")
+        return "I eat chicken"
 
 
 def define_animal(animal_bio:Animal):
