@@ -47,7 +47,7 @@ class PickleFileSerdeHandler(FileSerdeHandler):
 
 
 if __name__ == "__main__":
-    # ABCS CANNOT BE INSTANtiated directly we need to implement abstract methods in sub classes first
+    # ABCs CANNOT BE Instantiated directly we need to implement abstract methods in sub classes first
     # file1 = FileSerdeHandler('abc.txt')
     #Traceback (most recent call last):
     #   File "/Users/sanchitgawde/PycharmProjects/Python_OOPS/abstract_base_class_ex.py", line 26, in <module>
